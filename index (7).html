@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Horizon Properties - Imóveis de Luxo</title>
+    <meta name="description" content="Plataforma moderna de imóveis de luxo no Brasil e Estados Unidos. Encontre sua propriedade dos sonhos com a Summit Horizon Properties.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-inter">
+    <!-- Header -->
+    <header class="bg-off-white shadow-sm">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="font-playfair text-2xl font-bold text-earthy-brown">
+                    Summit Horizon Properties
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-dark-gray hover:text-earthy-brown transition-colors">Home</a>
+                    <a href="#properties" class="text-dark-gray hover:text-earthy-brown transition-colors">Imóveis</a>
+                    <a href="#about" class="text-dark-gray hover:text-earthy-brown transition-colors">Sobre</a>
+                    <a href="#contact" class="text-dark-gray hover:text-earthy-brown transition-colors">Contato</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="font-playfair text-5xl md:text-7xl font-bold text-off-white mb-8">
+                Encontre Seu Lar dos Sonhos
+            </h1>
+            <p class="text-xl md:text-2xl text-off-white mb-12 max-w-3xl mx-auto leading-relaxed">
+                Descubra propriedades de luxo exclusivas no Brasil e Estados Unidos. 
+                Experiência premium garantida.
+            </p>
+            <div class="bg-off-white rounded-2xl p-8 max-w-4xl mx-auto shadow-2xl">
+                <form id="search-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-dark-gray mb-2">Localização</label>
+                            <input type="text" 
+                                   id="location-input"
+                                   name="location"
+                                   placeholder="Ex: NY, São Paulo, Rio" 
+                                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-earthy-brown">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-dark-gray mb-2">Tipo de Imóvel</label>
+                            <select id="type-select" 
+                                    name="propertyType"
+                                    class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-earthy-brown">
+                                <option value="">Selecionar tipo</option>
+                                <option value="apartamento">Apartamento</option>
+                                <option value="casa">Casa</option>
+                                <option value="mansao">Mansão</option>
+                                <option value="loft">Loft</option>
+                                <option value="villa">Villa</option>
+                                <option value="penthouse">Cobertura</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-dark-gray mb-2">Faixa de Preço</label>
+                            <select id="price-select"
+                                    name="priceRange"
+                                    class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-earthy-brown">
+                                <option value="">Selecionar faixa</option>
+                                <option value="ate-1-milhao">Até 1 milhão</option>
+                                <option value="1-3-milhoes">1-3 milhões</option>
+                                <option value="3-10-milhoes">3-10 milhões</option>
+                                <option value="10-plus-milhoes">10+ milhões</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" 
+                            class="w-full mt-6 bg-earthy-brown text-off-white py-4 px-8 rounded-lg font-semibold text-lg hover:bg-opacity-90 transition-colors">
+                        Buscar Propriedades
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section id="properties" class="py-20 bg-off-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-earthy-brown mb-6">
+                    Propriedades em Destaque
+                </h2>
+                <p class="text-xl text-dark-gray max-w-3xl mx-auto leading-relaxed">
+                    Explore nossa coleção exclusiva de imóveis de luxo no Brasil e Nova York
+                </p>
+            </div>
+
+            <div id="featured-properties" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Properties will be dynamically loaded here -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <button onclick="showAllProperties()" 
+                        class="bg-earthy-brown text-off-white py-3 px-8 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+                    Ver Todas as Propriedades
+                </button>
+            </div>
+            
+            <!-- All Properties Container (hidden initially) -->
+            <div id="all-properties" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12" style="display: none;">
+                <!-- Filtered properties will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-warm-beige">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-earthy-brown mb-8">
+                    Por que Escolher a Summit Horizon?
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-earthy-brown rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-off-white text-2xl">🏆</span>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-earthy-brown mb-3">Experiência Comprovada</h3>
+                        <p class="text-dark-gray">Mais de 15 anos no mercado imobiliário de luxo, com centenas de clientes satisfeitos.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-earthy-brown rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-off-white text-2xl">🤝</span>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-earthy-brown mb-3">Atendimento Personalizado</h3>
+                        <p class="text-dark-gray">Cada cliente recebe atenção exclusiva com consultores especializados em imóveis de alto padrão.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-earthy-brown rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-off-white text-2xl">🛡️</span>
+                        </div>
+                        <h3 class="font-playfair text-xl font-semibold text-earthy-brown mb-3">Transações Seguras</h3>
+                        <p class="text-dark-gray">Processos transparentes e seguros, com suporte jurídico completo em todas as etapas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-off-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-earthy-brown mb-8">
+                    Entre em Contato
+                </h2>
+                <p class="text-xl text-dark-gray mb-12">
+                    Pronto para encontrar sua propriedade dos sonhos? Nossa equipe está aqui para ajudar.
+                </p>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <input type="text" 
+                                   name="name"
+                                   placeholder="Seu nome completo" 
+                                   required
+                                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-earthy-brown">
+                        </div>
+                        <div>
+                            <input type="email" 
+                                   name="email"
+                                   placeholder="Seu e-mail" 
+                                   required
+                                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-earthy-brown">
+                        </div>
+                        <div>
+                            <input type="tel" 
+                                   name="phone"
+                                   placeholder="Seu telefone" 
+                                   class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-earthy-brown">
+                        </div>
+                        <div>
+                            <textarea name="message"
+                                      placeholder="Descreva o tipo de propriedade que procura..." 
+                                      rows="4"
+                                      required
+                                      class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-earthy-brown"></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-earthy-brown text-off-white py-4 px-8 rounded-lg font-semibold text-lg hover:bg-opacity-90 transition-colors">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-dark-gray mb-4">Ou entre em contato diretamente:</p>
+                    <div class="space-y-2">
+                        <p class="text-earthy-brown font-semibold">📧 contato@summithorizon.com.br</p>
+                        <p class="text-earthy-brown font-semibold">📱 +55 (11) 99999-9999</p>
+                        <p class="text-earthy-brown font-semibold">💬 WhatsApp: +55 (11) 99999-9999</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-earthy-brown text-off-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="font-playfair text-2xl font-bold mb-4">Summit Horizon Properties</div>
+            <p class="text-lg mb-6">Conectando você ao seu lar dos sonhos desde 2008</p>
+            <p class="text-sm opacity-80">
+                © 2025 Summit Horizon Properties. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Data and Scripts -->
+    <script src="properties-data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
